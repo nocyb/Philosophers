@@ -6,7 +6,7 @@
 #    By: njung <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 14:10:08 by njung             #+#    #+#              #
-#    Updated: 2025/03/27 10:46:50 by njung            ###   ########.fr        #
+#    Updated: 2025/03/27 11:01:17 by njung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,22 @@ all:        $(NAME)
 
 $(NAME):    $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) -o $(NAME)
-			@echo "$(NAME) created!"
+			@echo "$(NAME) is now available to use!"
+			@echo "\033[1;33m"
+			@echo "██████╗ ██╗  ██╗██╗██╗      ██████╗ "
+			@echo "██╔══██╗██║  ██║██║██║     ██╔═══██╗"
+			@echo "██████╔╝███████║██║██║     ██║   ██║"
+			@echo "██╔═══╝ ██╔══██║██║██║     ██║   ██║"
+			@echo "██║     ██║  ██║██║███████╗╚██████╔╝"
+			@echo "╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ "
+			@echo "\033[0m"
 
 %.o:        %.c
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 			$(RM) $(OBJS)
-			@echo "Objects removed!"
+			@echo "Objsects removed!"
 
 fclean:		clean
 			$(RM) $(NAME)
