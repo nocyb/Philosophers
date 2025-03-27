@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: njung <njung@student.42.fr>                +#+  +:+       +#+         #
+#    By: njung <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 14:10:08 by njung             #+#    #+#              #
-#    Updated: 2025/03/25 14:13:23 by njung            ###   ########.fr        #
+#    Updated: 2025/03/27 10:46:50 by njung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM            = rm -f
 INCLUDES    = -I./include
 
 SRCS_DIR    = srcs/
-SRCS        = main.c parsing.c utils.c init.c
+SRCS        = main.c parsing.c parsing2.c utils.c init.c 
 SRCS_PATH    = $(addprefix $(SRCS_DIR), $(SRCS))
 
 OBJS        = $(SRCS_PATH:.c=.o)

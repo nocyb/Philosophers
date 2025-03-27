@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:27:59 by njung             #+#    #+#             */
-/*   Updated: 2025/03/25 17:01:54 by njung            ###   ########.fr       */
+/*   Updated: 2025/03/27 10:43:51 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void					parsing(int ac, char **av);
 int						check_limits(int ac, char **av);
 int						check_limits2(int ac, char **av);
 int						check_limits3(int ac, char **av);
+
+// parsing2.c
+int                     check_letters(int ac, char **av);
 
 // utils.c
 int						ft_atoi(const char *str);
