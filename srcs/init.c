@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:53:27 by njung             #+#    #+#             */
-/*   Updated: 2025/03/27 10:35:40 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/04 15:36:02 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	init_mutexes(t_data *data)
         i++;
     }
     pthread_mutex_init(&data->print_mutex, NULL);
+    pthread_mutex_init(&data->end_mutex, NULL);
+    pthread_mutex_init(&data->meal_mutex, NULL);
 }
 
 void	init_general(int ac, char **av, t_data *data)
@@ -71,10 +73,8 @@ void	init_philo(t_data *data)
         data->philos[i].left_fork = &data->forks[i];
         data->philos[i].right_fork = &data->forks[(i + 1) % data->nb_philo];
         data->philos[i].data = data;
-        /*
         pthread_create(&data->philos[i].thread, NULL, philosopher_routine,
             &data->philos[i]);
-        */
         i++;
     }
 }

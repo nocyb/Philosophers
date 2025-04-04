@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:27:59 by njung             #+#    #+#             */
-/*   Updated: 2025/03/27 10:57:08 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/04 17:22:24 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_data
     long                start_time;
     pthread_mutex_t		*forks;              // Tableau des fourchettes (mutex)
     pthread_mutex_t		print_mutex;         // Mutex pour l'affichage
+    pthread_mutex_t     end_mutex;           // Mutex pour voir quand c fini
+    pthread_mutex_t     meal_mutex;          // Mutex de la graillance
     t_philo				*philos;             // Tableau des philosophes
 }						t_data;
 
@@ -69,8 +71,12 @@ int                     check_letters(int ac, char **av);
 // utils.c
 int						ft_atoi(const char *str);
 void					free_resources(t_data *data);
+void                    print_status(t_philo *philo, char *status);
+int                     simulation_is_over(t_philo *philo);
+void                    set_simulation_end(t_data *data);
 
 // routine.c
 void					*philosopher_routine(void *arg);
+void                    take_forks(t_philo *philo);
 
 #endif

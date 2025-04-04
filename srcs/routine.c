@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:29:39 by njung             #+#    #+#             */
-/*   Updated: 2025/04/04 14:26:31 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/04 17:22:15 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,23 @@ void *philosopher_routine(void *arg)
         sleep_philosopher(philo);
         think(philo);
     }
-    return NULL;
+    return (NULL);
+}
+
+void take_forks(t_philo *philo)
+{
+    if (philo->id % 2 == 0)
+    {
+       pthread_mutex_lock(philo->right_fork);
+       print_status(philo, "has taken a fork");
+       pthread_mutex_lock(philo->left_fork);
+       print_status(philo, "has taken a fork");
+    }
+    else
+    {
+       pthread_mutex_lock(philo->left_fork);
+       print_status(philo, "has taken a fork");
+       pthread_mutex_lock(philo->right_fork);
+       print_status(philo, "has taken a fork"); 
+    }
 }
