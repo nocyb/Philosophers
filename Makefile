@@ -6,7 +6,7 @@
 #    By: njung <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 14:10:08 by njung             #+#    #+#              #
-#    Updated: 2025/03/27 11:01:17 by njung            ###   ########.fr        #
+#    Updated: 2025/04/04 18:34:26 by njung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM            = rm -f
 INCLUDES    = -I./include
 
 SRCS_DIR    = srcs/
-SRCS        = main.c parsing.c parsing2.c utils.c init.c 
+SRCS        = main.c parsing.c parsing2.c utils.c init.c routine.c
 SRCS_PATH    = $(addprefix $(SRCS_DIR), $(SRCS))
 
 OBJS        = $(SRCS_PATH:.c=.o)
