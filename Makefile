@@ -6,11 +6,11 @@
 #    By: njung <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 14:10:08 by njung             #+#    #+#              #
-#    Updated: 2025/04/07 13:56:03 by njung            ###   ########.fr        #
+#    Updated: 2025/04/07 15:31:31 by njung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = philosophers
+NAME        = philo
 
 CC            = cc
 CFLAGS        = -Wall -Wextra -Werror -pthread
@@ -19,7 +19,7 @@ RM            = rm -f
 INCLUDES    = -I./include
 
 SRCS_DIR    = srcs/
-SRCS        = main.c parsing.c parsing2.c utils.c init.c routine.c utils2.c routine2.c
+SRCS        = main.c parsing.c parsing2.c utils.c init.c routine.c utils2.c routine2.c check_philos.c
 SRCS_PATH    = $(addprefix $(SRCS_DIR), $(SRCS))
 
 OBJS        = $(SRCS_PATH:.c=.o)

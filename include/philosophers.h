@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:27:59 by njung             #+#    #+#             */
-/*   Updated: 2025/04/07 13:43:16 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/07 15:26:03 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void                    set_simulation_end(t_data *data);
 // utils2.c
 long                    get_current_time(void);
 void                    precise_sleep(int milliseconds);
+void                    print_death(t_data *data, int i);
 
 // routine.c
 void					*philosopher_routine(void *arg);
@@ -88,5 +89,9 @@ void                    sleep_philo(t_philo *philo);
 
 // routine2.c
 void                    think(t_philo *philo);
+
+// check_philos.c
+void                    check_philosopher_status(t_data *data, int i, int *all_ate_enough);
+void                    monitor_philosophers(t_data *data);
 
 #endif
