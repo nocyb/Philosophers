@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:27:59 by njung             #+#    #+#             */
-/*   Updated: 2025/04/04 18:46:25 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/07 13:43:16 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,8 @@ void                    take_forks(t_philo *philo);
 void                    eat(t_philo *philo);
 void                    put_down_forks(t_philo *philo);
 void                    sleep_philo(t_philo *philo);
+
+// routine2.c
+void                    think(t_philo *philo);
 
 #endif

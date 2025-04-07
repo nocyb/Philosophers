@@ -6,7 +6,7 @@
 /*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:29:39 by njung             #+#    #+#             */
-/*   Updated: 2025/04/04 18:50:02 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/07 13:44:07 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void *philosopher_routine(void *arg)
         take_forks(philo);
         eat(philo);
         put_down_forks(philo);
-        sleep_philosopher(philo);
+        sleep_philo(philo);
         think(philo);
     }
     return (NULL);

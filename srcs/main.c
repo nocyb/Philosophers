@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:17:39 by njung             #+#    #+#             */
-/*   Updated: 2025/03/25 16:41:49 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/07 13:56:10 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
     printf("nb_meals: %d\n", data.nb_meals);
     printf("nb_forks: %d\n", data.nb_forks);
     
-    // init_philo(&data);
+    init_philo(&data);
     // wait_for_philosophers(&data);  // a faire
     
     free_resources(&data);
