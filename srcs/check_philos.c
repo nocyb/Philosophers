@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:14:01 by njung             #+#    #+#             */
-/*   Updated: 2025/04/07 19:44:25 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/08 13:52:38 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,42 @@ void check_philosopher_status(t_data *data, int i, int *all_ate_enough)
     pthread_mutex_unlock(&data->meal_mutex);
 }
 
+void join_threads(t_data *data)
+{
+    int i;
+
+    i = 0;
+    while (i < data->nb_philo)
+    {
+        pthread_join(data->philos[i].thread, NULL);
+        i++;
+    }
+}
+
 void monitor_philosophers(t_data *data)
 {
     int i;
     int all_ate_enough;
+    int should_exit;
     
-    while (1)
+    should_exit = 0;
+    while (!should_exit)
     {
         i = -1;
         all_ate_enough = 1;
-        while (++i < data->nb_philo)
+        while (++i < data->nb_philo && !should_exit)
         {
             check_philosopher_status(data, i, &all_ate_enough);
             if (all_ate_enough == -1)
-                return;
+                should_exit = 1;
         }
-        if (data->nb_meals != -1 && all_ate_enough)
+        if (data->nb_meals != -1 && all_ate_enough && !should_exit)
         {
             set_simulation_end(data);
-            return;
+            should_exit = 1;
         }
-        usleep(1000);
+        if (!should_exit)
+            usleep(1000);
     }
+    join_threads(data);
 }

@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:27:59 by njung             #+#    #+#             */
-/*   Updated: 2025/04/07 16:32:34 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/08 13:53:18 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ void                    think(t_philo *philo);
 // check_philos.c
 void                    check_philosopher_status(t_data *data, int i, int *all_ate_enough);
 void                    monitor_philosophers(t_data *data);
+void                    join_threads(t_data *data);
 
 #endif

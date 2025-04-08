@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:38:04 by njung             #+#    #+#             */
-/*   Updated: 2025/04/07 19:44:24 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/08 13:43:38 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ void free_resources(t_data *data)
     pthread_mutex_destroy(&data->print_mutex);
 	pthread_mutex_destroy(&data->end_mutex);
 	pthread_mutex_destroy(&data->meal_mutex);
-    free(data->forks);
-    free(data->philos);
+    if (data->forks)
+        free(data->forks);
+    if (data->philos)
+        free(data->philos);
 }
 void print_status(t_philo *philo, char *status)
 {
