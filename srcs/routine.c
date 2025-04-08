@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:29:39 by njung             #+#    #+#             */
-/*   Updated: 2025/04/08 13:51:24 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/08 18:35:05 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@ void *philosopher_routine(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
 
-    if (philo->data->nb_philo == 1){
-        pthread_mutex_lock(philo->left_fork);
-        print_status(philo, "has taken a fork");
-        precise_sleep(philo->data->time_to_die);
-        return (NULL);
-    }
+    if (philo->data->nb_philo == 1)
+        return (one_philosopher_routine(philo));
 
     if (philo->id % 2 == 0)
         precise_sleep(philo->data->time_to_eat / 2);
