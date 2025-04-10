@@ -6,11 +6,19 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:38:04 by njung             #+#    #+#             */
-/*   Updated: 2025/04/08 16:46:23 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/10 16:12:13 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int	handle_overflow(int sign)
+{
+	if (sign == 1)
+		return (INT_MAX);
+	else
+		return (-INT_MAX - 1);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -33,7 +41,7 @@ int	ft_atoi(const char *str)
 	{
 		res = (res * 10) + (str[i] - '0');
 		if (res * s > INT_MAX || res * s < -INT_MAX - 1)
-			return (s == 1 ? INT_MAX : -INT_MAX - 1);
+			return (handle_overflow(s));
 		i++;
 	}
 	return ((int)(res * s));
@@ -56,21 +64,6 @@ void	free_resources(t_data *data)
 		free(data->forks);
 	if (data->philos)
 		free(data->philos);
-}
-
-void	print_status(t_philo *philo, char *status)
-{
-	long	timestamp;
-
-	if (simulation_is_over(philo))
-		return ;
-	pthread_mutex_lock(&philo->data->print_mutex);
-	if (!simulation_is_over(philo))
-	{
-		timestamp = get_current_time() - philo->data->start_time;
-		printf("%ld %d %s\n", timestamp, philo->id, status);
-	}
-	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
 int	simulation_is_over(t_philo *philo)
