@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:53:27 by njung             #+#    #+#             */
-/*   Updated: 2025/04/10 14:22:23 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/14 11:37:36 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,34 @@ void	init_mutexes(t_data *data)
 	pthread_mutex_init(&data->meal_mutex, NULL);
 }
 
-void	init_general(int ac, char **av, t_data *data)
+int	init_general(int ac, char **av, t_data *data)
 {
-	data->nb_philo = ft_atoi(av[1]);
-	data->nb_forks = ft_atoi(av[1]);
-	data->time_to_die = ft_atoi(av[2]);
-	data->time_to_eat = ft_atoi(av[3]);
-	data->time_to_sleep = ft_atoi(av[4]);
-	if (ac == 6)
-		data->nb_meals = ft_atoi(av[5]);
-	else
-		data->nb_meals = -1;
-	data->simulation_end = 0;
-	data->start_time = 0;
-	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philo);
-	if (!data->forks)
-	{
-		write(1, "Memory allocation failed for forks\n", 35);
-		exit(1);
-	}
-	data->philos = malloc(sizeof(t_philo) * data->nb_philo);
-	if (!data->philos)
-	{
-		write(1, "Memory allocation failed for philosophers\n", 42);
-		free(data->forks);
-		exit(1);
-	}
-	init_mutexes(data);
+    data->nb_philo = ft_atoi(av[1]);
+    data->nb_forks = ft_atoi(av[1]);
+    data->time_to_die = ft_atoi(av[2]);
+    data->time_to_eat = ft_atoi(av[3]);
+    data->time_to_sleep = ft_atoi(av[4]);
+    if (ac == 6)
+        data->nb_meals = ft_atoi(av[5]);
+    else
+        data->nb_meals = -1;
+    data->simulation_end = 0;
+    data->start_time = 0;
+    data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philo);
+    if (!data->forks)
+    {
+        write(1, "Memory allocation failed for forks\n", 35);
+        return (0);
+    }
+    data->philos = malloc(sizeof(t_philo) * data->nb_philo);
+    if (!data->philos)
+    {
+        write(1, "Memory allocation failed for philosophers\n", 42);
+        free(data->forks);
+        return (0);
+    }
+    init_mutexes(data);
+    return (1);
 }
 
 void	init_philo(t_data *data)

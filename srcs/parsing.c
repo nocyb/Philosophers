@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:17:47 by njung             #+#    #+#             */
-/*   Updated: 2025/04/10 14:33:01 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/14 11:32:17 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	ft_usage(void)
 {
-	write(1, "\033[31mWrong Usage!\n\033[0m", 22);
-	write(1, "\033[32m/philosophers 1 2 3 4 5 =\n", 31);
-	write(1, "1. Number of philo\n", 19);
-	write(1, "2. Time To Die (in millsiseconds)\n", 34);
-	write(1, "3. Time To Eat (in milliseconds)\n", 33);
-	write(1, "4. Time To Sleep (in milliseconds)\n", 35);
-	write(1, "\033[33m(optional) 5. Nb of meals\n\033[0m", 36);
-	exit(0);
+    write(1, "\033[31mWrong Usage!\n\033[0m", 22);
+    write(1, "\033[32m/philosophers 1 2 3 4 5 =\n", 31);
+    write(1, "1. Number of philo\n", 19);
+    write(1, "2. Time To Die (in millsiseconds)\n", 34);
+    write(1, "3. Time To Eat (in milliseconds)\n", 33);
+    write(1, "4. Time To Sleep (in milliseconds)\n", 35);
+    write(1, "\033[33m(optional) 5. Nb of meals\n\033[0m", 36);
 }
 
 int	check_limits(int ac, char **av)
@@ -83,17 +82,28 @@ int	check_limits3(int ac, char **av)
 	return (1);
 }
 
-void	parsing(int ac, char **av)
+int	parsing(int ac, char **av)
 {
-	if (ac < 5 || ac > 6)
-		ft_usage();
-	else if (!check_letters(ac, av))
-	{
-		write(1, "Error, input must contains only numbers!\n", 41);
-		ft_usage();
-	}
-	else if (!check_limits(ac, av))
-		ft_usage();
-	else if (!check_limits2(ac, av) || !check_limits3(ac, av))
-		ft_usage();
+    if (ac < 5 || ac > 6)
+    {
+        ft_usage();
+        return (0);
+    }
+    else if (!check_letters(ac, av))
+    {
+        write(1, "Error, input must contain only numbers!\n", 41);
+        ft_usage();
+        return (0);
+    }
+    else if (!check_limits(ac, av))
+    {
+        ft_usage();
+        return (0);
+    }
+    else if (!check_limits2(ac, av) || !check_limits3(ac, av))
+    {
+        ft_usage();
+        return (0);
+    }
+    return (1);
 }

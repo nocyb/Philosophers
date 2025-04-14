@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: njung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:27:59 by njung             #+#    #+#             */
-/*   Updated: 2025/04/10 16:11:53 by njung            ###   ########.fr       */
+/*   Updated: 2025/04/14 11:38:01 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ typedef struct s_data
 }						t_data;
 
 // init.c
-void					init_general(int ac, char **av, t_data *data);
+int						init_general(int ac, char **av, t_data *data);
 void					init_philo(t_data *data);
 void					init_mutexes(t_data *data);
 
 // parsing.c
 void					ft_usage(void);
-void					parsing(int ac, char **av);
+int						parsing(int ac, char **av);
 int						check_limits(int ac, char **av);
 int						check_limits2(int ac, char **av);
 int						check_limits3(int ac, char **av);
